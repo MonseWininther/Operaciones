@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        let valor1, valor2, operacion, resultado
+
+        function recuperarVariablesDeSesion() {
+            //parseFloat sirve para forzar a que los valores guardados 
+            //en la sesion se recuperen como numeros
+            valor1 = parseFloat(sessionStorage.getItem("valor1"))
+            valor2 = parseFloat(sessionStorage.getItem("valor2"))
+            operacion = sessionStorage.getItem("operacion")
+        }
+
+        function realizarOperacion() {
+            if (operacion == "suma") {
+                resultado = valor1 + valor2
+            } else if (operacion == "resta") {
+                resultado = valor1 - valor2
+            } else if (operacion == "multi") {
+                resultado = valor1 * valor2
+            } else if (operacion == "division") {
+                resultado = valor1 / valor2
+            }
+
+            resultadoInput = document.getElementById("resultado")
+            resultadoInput.value = resultado
+
+        }
+        window.onload = function() {
+            recuperarVariablesDeSesion()
+            realizarOperacion()
+        }
+    </script>
+</head>
+
+<body>
+    <input type="number " name="resultado" id="resultado">
+</body>
+<footer>
+    Made in 🐶+🐱.
+</footer>
+
+</html>
